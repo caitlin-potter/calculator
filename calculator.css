@@ -1,0 +1,70 @@
+body, html {
+    background-color: rgb(238, 238, 238); 
+    width; 85px; 
+    font-family: 'Livvic', sans-serif;
+    font-weight: normal;
+}
+
+.input {
+    background-color: #4CAF50;
+    color: rgb(64, 77, 67);
+    width: 285px;
+    height: 50px;
+    direction: rtl;
+    padding-top: 10px;
+    padding-right: 5px;
+    margin-top: 35px;
+    margin-bottom: 10px;
+    font-size: 30px;
+    font-family: 'Livvic', sans-serif;
+    font-weight: bold;
+    outline: 2px;
+}
+
+.calculator {
+    width: 350px;
+    height: 500px;
+    background-color: rgb(64, 77, 67);
+    margin-top: 50px;
+    margin-left: 620px;
+    text-align: center;
+    position: relative;
+}
+
+.row {
+    display: block;
+}
+
+.button {
+    width: 70px;
+    height: 70px;
+    background-color: rgb(238, 238, 238);
+    color: rgb(64, 77, 67);
+    font-size: 30px;
+    font-weight: bold;
+    margin-left: 1px;
+    margin-right: 1px;
+    margin-bottom: 1px;
+    outline: 2px;
+}
+
+.button-large {
+    width: 145px;
+    height: 70px;
+    background-color: rgb(238, 238, 238);
+    color: rgb(64, 77, 67);
+    font-size: 30px;
+    font-weight: bold;
+    margin-left: 1px;
+    margin-right: 1px;
+    margin-bottom: 1px;
+    outline: 2px;
+}
+
+.button:hover {
+    background-color: #4CAF50;
+}
+
+.button-large:hover {
+    background-color: #4CAF50;
+}
