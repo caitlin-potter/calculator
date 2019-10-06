@@ -1,56 +1,91 @@
 var numString = ''
 var numArray = []
-let display = document.getElementById('display') 
+let display = document.getElementById('display')
 let isPreviousResult = false
 
-function buttonClick() {
-    document.addEventListener(click, buttonClick)
+listener()
+
+function listener() {
+  document.addEventListener('click', getButtonValue)
 }
 
-function getButtonValue() {
-    for (i=0; something < val; i++)
-
-    if num
-    else allClear
-    else clear 
-    else calculate 
-    else storeNumber
+function getButtonValue () {
+  let button = event.target.value
+  if (!isNaN(button) || button === '.') {
+    number(button)
+  } else if (button === 'AC') {
+    allClear()
+  } else if (button === 'CE') {
+    clear()
+  } else if (button === '=') {
+    calculate()
+  } else {
+    storeNumber(button)
+  }
 }
 
-function number(button) {
-    //if buttons include decimals it will return
+function number (button) {
+  if (button === '.' && numString.includes('.')) {
+    return
+  } else if (numString.charAt(0) === '0' && numString.length === 1 && button === '0') {
+    return
+  } else {
+    if (isPreviousResult === true){
+      numString = ''
+      isPreviousResult = false
+    }
+    numString += button
+    display.value = numString
+  }
 }
 
-function allClear() {
-    numString = ''
-    numArray = []
-    display.value = 0
+function allClear () {
+  numString = ''
+  numArray = []
+  display.value = '0'
 }
 
-function clear() {
-    numString = ''
-    numArray = []
+function clear () {
+  numString = ''
+  display.value = '0'
 }
 
 function storeNumber(button) {
-    // Create a storeNumber function for button (e.g function storeNumber (button) {}). Create an if/else statement. 
-    // - if numString is an empty string '' and the length of numArray is equal to 0 then return. If the variable numString is just an empty string '', then the length of numArray will equal -1 and
-    // the button value will be pushed in to the Array. 
-    // - else the string and button will be pushed in to the array, and numString will equal an empty string. 
+  if (numString === '' && numArray.length === 0) {
+    return
+  } else if (numString === '') {
+    numArray.length = numArray.length - 1
+    numArray.push(button)
+  } else {
+    numArray.push(numString)
+    numArray.push(button)
+    numString = ''
+  }
 }
 
 function calculate () {
-    // Create a calculate function. This function needs to include the number object and the maths.abs function so that the absolute value of a number can be returned. 
-    // (e.g. let currentNumber = Number(numArray[0])) and create a for loop for numArray. 
-    // The calculate function needs to include reference to the symbols used to calculate the numbers on the board. 
-    // If the currentNumber is less than 0 it will use the Math.abs function to use the '-' symbol.
-    display.value = currentNumber
-    numString (JSON.stringify) = JSON.stringify(currentNumber)
-    isPreviousResult = true
-    numArray = []
+  numArray.push(numString)
+  let currentNumber = Number(numArray[0])
+  for (var i = 0; i < numArray.length; i++) {
+    let nextNumber = Number(numArray[i + 1])
+    let symbol = numArray[i]
+    if (symbol === '+') {
+      currentNumber += nextNumber
+    } else if (symbol === '-') {
+      currentNumber -= nextNumber
+    } else if (symbol === '*') {
+      currentNumber *= nextNumber
+    } else if (symbol === '/') {
+      currentNumber /= nextNumber
+    }
+  }
+  if (currentNumber < 0) {
+    currentNumber = Math.abs(currentNumber) + '-'
+  }
+
+  display.value = currentNumber
+  numString = JSON.stringify(currentNumber)
+  isPreviousResult = true
+  numArray = []
 }
-
-
-
-
 
